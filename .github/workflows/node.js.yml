@@ -12,8 +12,8 @@ jobs:
 
     runs-on: ubuntu-latest
     defaults:
-  run:
-    working-directory: js/var-7
+      run:
+        working-directory: js/var-7
 
     strategy:
       matrix:
