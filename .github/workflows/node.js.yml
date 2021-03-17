@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: react/var-1
+        working-directory: react/var-1/main
 
     strategy:
       matrix:
