@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webtech</title>
+</head>
+
+<body>
+    <p>Webtech app</p>
+    <table id="table"></table>
+    <input type="button" value="load" id="load">
+    <input type="text" id="name">
+    <input type="button" value="delete" id="delete">
+    <script>
+        window.onload = () => {
+            let loadBtn = document.getElementById("load")
+            let delteteBtn = document.getElementById('delete')
+            let table = document.getElementById("table")
+            let name = document.getElementById('name')
+            let data
+            let loadData = async () => {
+                let response = await fetch('/data')
+                data = await response.json()
+            }
+            loadData()
+
+            let drawTable = (filter) => {
+                let info = data;
+                if (filter) {
+                    info = info.filter(x => x.name !== filter)
+                }
+                let rows = info.map(row => {
+                    return `
+                        <tr>
+                            <td>${row.name}</td>
+                            <td>${row.surname}</td>
+                            <td>${row.age}</td>
+                        </tr>
+                    `
+                })
+                table.innerHTML = rows.join()
+            }
+            loadBtn.onclick = () => {
+                loadData()
+                drawTable()
+            }
+
+            delteteBtn.onclick = () => {
+                drawTable(name.value)
+            }
+        }
+    </script>
+</body>
+
+</html>
