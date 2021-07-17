@@ -11,7 +11,7 @@ function applyDiscount(vehicles, discount) {
                             minPrice = vehicle.price
                         }
                     } else {
-                        // reject(new Error("Invalid array format"))
+                        reject(new Error("Invalid array format"))
                     }
 
                 })
